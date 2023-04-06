@@ -60,35 +60,36 @@ melon_cost = 1.00
 #           f"expected ${customer6_expected:.2f}"
         #   )
 
-def check_customers_payments(filename):  
+def check_customers_payments(filename):  # created function that takes orders file
 
-    payments = open(filename)
+    payments = open(filename)  # open the file 
 
-    for line in payments:
-        order = line.split("|")
+    for line in payments:   # loop over each line in that file
+        order = line.split("|") # split the lines by "|" to get a list
 
+        # assign variables for each item we will need in the conditions to its index
         name = order[1]
         qty = float(order[2])
         amount_paid = float(order[3])
 
-        expected_payment = qty * melon_cost
+        expected_payment = qty * melon_cost  # cauculates the expected payment that each cliente should make based on their order
         
         
-        if expected_payment < amount_paid: 
-            print(f"{name} paid $ {amount_paid},",
+        if expected_payment < amount_paid:   # checks if the amount paid is less than the payment expected 
+            print(f"{name} paid $ {amount_paid},",   # Prints their general information and if they overpaid for their order
               f"expected $ {expected_payment:.2f}")
                       
             print(f"They overpaid for their melons.")
             print() 
 
-        elif expected_payment > amount_paid:
-            print(f"{name} paid $ {amount_paid},",
+        elif expected_payment > amount_paid:   # checks if the amount paid is more than the payment expected
+            print(f"{name} paid $ {amount_paid},",    # Prints their general information and if they underpaid for their order
               f"expected $ {expected_payment:.2f}")
             
             print(f"They underpaid for their melons.")
             print()
 
-    payments.close()
+    payments.close()    # close the file
 
 
 
